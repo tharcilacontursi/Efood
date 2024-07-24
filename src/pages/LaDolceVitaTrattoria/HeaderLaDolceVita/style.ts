@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import tratoria from '../../../assets/images/tratoria.png';
+
 import { cores } from "../../../styles";
 
 export const Container = styled.section`
   width: 100%;
-  height: auto;
+  height: 466px;
+  margin-bottom: 80px;
 `;
 
 export const LogoContainer = styled.div`
@@ -40,19 +43,20 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: space-between;
 padding: 24px 80px;
+filter: brightness(0.5);
+    h2, h1 {
+        color: ${cores.branco};
+        font-size: 32px;
+    }
+    
+    h2 {
+        font-weight: 100;
+        line-height: 37.5px;
+    }
+    
+    h1 {
+        font-weight: bold;
+    }
+`
 
 
-h2, h1 {
-    color: ${cores.branco};
-    font-size: 32px;
-}
-
-h2 {
-    font-weight: 100;
-    line-height: 37.5px;
-}
-
-h1 {
-    font-weight: bold;
-}
-`;

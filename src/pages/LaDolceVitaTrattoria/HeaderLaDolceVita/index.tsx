@@ -1,7 +1,7 @@
 import fundo from '../../../assets/images/fundo.png';
 import logo from '../../../assets/images/logo.png';
 import tratoria from '../../../assets/images/tratoria.png';
-import { Container, Logo, LogoContainer, TrattoriaContainer } from './style';
+import { Container, Logo, LogoContainer, TrattoriaContainer,  } from './style';
 
 const HeaderLaDolceVita = () => (
     <Container>

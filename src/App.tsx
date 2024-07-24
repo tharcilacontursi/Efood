@@ -15,7 +15,7 @@ const rotas = createBrowserRouter([
   },
   {
     path: '/ladolcevita',
-    element: <LaDolceVitaTrattoria menu={itensDoMenu} />
+    element: <><HeaderLaDolceVita /><LaDolceVitaTrattoria menu={itensDoMenu} /></>
   }
 ]);
 
