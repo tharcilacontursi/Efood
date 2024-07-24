@@ -44,11 +44,13 @@ export const itensDoMenu: MenuClass[] = [
 ];
 
 const LaDolceVitaTrattoria = () => (
-  <>
+<>
   <HeaderLaDolceVita />
-  <div className="container">
-    <MenuList menu={itensDoMenu} />
-  </div></>
+<div className="container">
+<MenuList menu={itensDoMenu} />
+</div></>
 );
+
+
 
 export default LaDolceVitaTrattoria;

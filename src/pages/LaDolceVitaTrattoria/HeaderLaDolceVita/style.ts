@@ -2,43 +2,57 @@ import styled from "styled-components";
 import { cores } from "../../../styles";
 
 export const Container = styled.section`
-max-width: 1366px;
-width: 100%;
-height: 280px;
-`
-export const LogoContainer = styled.div`
-height: 94px;
-`
+  width: 100%;
+  height: auto;
+`;
 
-export const ImagemFundo = styled.div`
-width: 100%;
-height: 100%;
-background-size: cover;
-background-position: center;
-`
+export const LogoContainer = styled.div`
+  width: 100%;
+  height: 186px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 80px;
+`;
+
 
 export const Logo = styled.div`
-align-items: center;
-display: flex;
-justify-content: space-between;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  color: ${cores.laranja};
+}
+`;
+
 export const TrattoriaContainer = styled.div`
-height: 186px;
-h4{
-    font-size: 18px;
-    font-weight: bold;
-    color: ${cores.laranja};  
+height: 280px;
+overflow: hidden;
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: space-between;
+padding: 24px 80px;
+
+
+h2, h1 {
+    color: ${cores.branco};
+    font-size: 32px;
 }
 
-h2{
+h2 {
     font-weight: 100;
-color: ${cores.branco};
-size: 32px;
+    line-height: 37.5px;
 }
 
-h1{
+h1 {
     font-weight: bold;
-color: ${cores.branco};
-size: 32px;
 }
-`
+`;

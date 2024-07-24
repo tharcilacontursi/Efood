@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import LaDolceVitaTrattoria from "./MenuList";
 import { itensDoMenu } from "./pages/LaDolceVitaTrattoria/PaginaLaDolceVita";
+import HeaderLaDolceVita from "./pages/LaDolceVitaTrattoria/HeaderLaDolceVita";
 
 const rotas = createBrowserRouter([
   {
