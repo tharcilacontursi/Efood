@@ -4,7 +4,6 @@ import { Card, Titulo, Descricao, Infos, ImagemRestaurante } from './styles';
 import { ButtonLink } from '../Button';
 import Tag from '../Tag';
 import NotaAvaliada from '../Avaliacoes';
-import { url } from 'inspector';
 
 type Props = {
   image: string;
@@ -12,9 +11,10 @@ type Props = {
   title: string;
   infos: string[];
   nota: number;
+  link: string;
 };
 
-const Restaurant = ({ image, description, title, infos, nota }: Props) => (
+const Restaurant = ({ image, description, title, infos, nota, link }: Props) => (
 <Card>
     <ImagemRestaurante src={image} alt={title} />
     <Infos>
@@ -27,7 +27,7 @@ const Restaurant = ({ image, description, title, infos, nota }: Props) => (
     <NotaAvaliada>{nota}</NotaAvaliada>
     </div>
     <Descricao>{description}</Descricao>
-    <ButtonLink to={'/ladolcevita'}>Saiba mais</ButtonLink>
+    <ButtonLink to={link}>Saiba mais</ButtonLink>
     </Card>
 );
 
