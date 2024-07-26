@@ -16,7 +16,6 @@ export const LogoContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  padding: 80px;
 `;
 
 
@@ -35,6 +34,24 @@ h4 {
 `;
 
 export const TrattoriaContainer = styled.div`
+position: relative;
+
+
+
+&::after{
+  position: absolute;
+  background-color: #000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0.56;
+}
+
+.container{
+  z-index: 1;
+position: relative;
 height: 280px;
 overflow: hidden;
 width: 100%;
@@ -43,20 +60,23 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: space-between;
 padding: 24px 80px;
-filter: brightness(0.5);
-    h2, h1 {
-        color: ${cores.branco};
-        font-size: 32px;
-    }
-    
-    h2 {
-        font-weight: 100;
-        line-height: 37.5px;
-    }
-    
-    h1 {
-        font-weight: bold;
-    }
+}
+
+h2, h1 {
+    color: ${cores.branco};
+    font-size: 32px;
+}
+
+h2 {
+    font-weight: 100;
+    line-height: 37.5px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+
 `
 
 
