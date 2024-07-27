@@ -15,7 +15,7 @@ const HeaderLaDolceVita = () => (
         </div>
         </LogoContainer>
         <TrattoriaContainer style={{ backgroundImage: `url(${tratoria})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className="container">
+            <div className="trattoiacontainer">
             <h2>Italiana</h2>
             <h1>La Dolce Vita Trattoria</h1>
             </div>

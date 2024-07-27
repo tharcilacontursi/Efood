@@ -49,8 +49,8 @@ position: relative;
     opacity: 0.56;
 }
 
-.container{
-  z-index: 1;
+.trattoiacontainer{
+z-index: 1;
 position: relative;
 height: 280px;
 overflow: hidden;
@@ -60,6 +60,7 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: space-between;
 padding: 24px 80px;
+margin-left: 116px ;
 }
 
 h2, h1 {
