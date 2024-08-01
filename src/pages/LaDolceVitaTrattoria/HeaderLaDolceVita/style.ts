@@ -25,7 +25,7 @@ export const Logo = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  
+
 h4 {
   font-size: 18px;
   font-weight: bold;
@@ -40,28 +40,25 @@ position: relative;
 
 &::after{
   position: absolute;
-  background-color: #000;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
     content: '';
-    opacity: 0.56;
 }
 
-.trattoiacontainer{
-z-index: 1;
-position: relative;
-height: 280px;
-overflow: hidden;
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: space-between;
-padding: 24px 80px;
-margin-left: 116px ;
-}
+.container{
+  position: relative;
+    width: 100%;
+    height:280px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+  }
+
+
 
 h2, h1 {
     color: ${cores.branco};
@@ -71,10 +68,12 @@ h2, h1 {
 h2 {
     font-weight: 100;
     line-height: 37.5px;
+    margin-top: 25px;
 }
 
 h1 {
     font-weight: bold;
+    margin-bottom: 25px;
 }
 
 
