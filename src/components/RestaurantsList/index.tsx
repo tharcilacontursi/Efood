@@ -1,31 +1,48 @@
-import RestaurantClass from "../../models/restaurant";
-import Restaurant from "../Restaurante";
+import { Restaurante } from '../../pages/Home'
+import Restaurant from '../Restaurante'
 
-
-import { Container, List } from "./styles"
-
+import { Container, List } from './styles'
 
 export type Props = {
-    restaurantes: RestaurantClass[]
+  restaurantes: Restaurante[]
 }
 
-const RestaurantList = ({ restaurantes }: Props) => (
-<Container>
-<div className="container">
-<List>
-    {restaurantes.map((restaurante) => (
-        <Restaurant 
-            key={restaurante.id}
-            nota={restaurante.nota} 
-            image={restaurante.image} 
-            description={restaurante.description}
-            title={restaurante.title}
-            infos={restaurante.infos} 
-            link={restaurante.link} />
-    )) }
-    </List>
-</div>
-</Container>
-)
+const RestaurantList = ({ restaurantes }: Props) => {
+  const getRestauranteTags = (restaurante: Restaurante): string[] => {
+    const tags: string[] = []
+
+    if (restaurante.tipo && restaurante.tipo.length > 0) {
+      tags.push(restaurante.tipo)
+    }
+
+    if (restaurante.destacado) {
+      tags.push('Destaque da semana')
+    }
+
+    return tags
+  }
+  return (
+    <>
+      <Container>
+        <div className="container">
+          <List>
+            {restaurantes.map((restaurante) => (
+              <Restaurant
+                key={restaurante.id}
+                nota={restaurante.avaliacao}
+                image={restaurante.capa}
+                description={restaurante.descricao}
+                title={restaurante.titulo}
+                infos={getRestauranteTags(restaurante)}
+                link={`/${restaurante.id}`}
+                id={restaurante.id}
+              />
+            ))}
+          </List>
+        </div>
+      </Container>
+    </>
+  )
+}
 
 export default RestaurantList

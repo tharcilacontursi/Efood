@@ -1,24 +1,27 @@
-import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import React from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { GlobalCss } from "./styles";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import LaDolceVitaTrattoria from "./MenuList";
-import { itensDoMenu } from "./pages/LaDolceVitaTrattoria/PaginaLaDolceVita";
-import HeaderLaDolceVita from "./pages/LaDolceVitaTrattoria/HeaderLaDolceVita";
+import { GlobalCss } from './styles'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import HeaderLaDolceVita from './pages/HeaderLaDolceVita'
+import RestauranteDetalhe from './pages/DetalhesRestaurante'
 
 const rotas = createBrowserRouter([
   {
     path: '/',
-    element: <Home />
+    element: <Home />,
   },
   {
-    path: '/ladolcevita',
-    element: <><HeaderLaDolceVita /><LaDolceVitaTrattoria menu={itensDoMenu} /></>
-  }
-]);
-
+    path: '/restaunte/:id',
+    element: (
+      <>
+        <HeaderLaDolceVita />
+        <RestauranteDetalhe />
+      </>
+    ),
+  },
+])
 
 function App() {
   return (
@@ -27,8 +30,7 @@ function App() {
       <RouterProvider router={rotas} />
       <Footer />
     </>
-  );
+  )
 }
 
-
-export default App;
+export default App
