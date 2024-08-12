@@ -1,6 +1,11 @@
 import React from 'react'
-import { Descricao } from '../Restaurante/styles'
-import { MenuButton, MenuCard, MenuImage, MenuTitulo } from './styles'
+import {
+  MenuButton,
+  MenuCard,
+  MenuImage,
+  MenuTitulo,
+  Descricao,
+} from './styles'
 
 type Props = {
   image: string

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import HeaderLaDolceVita from '../HeaderLaDolceVita'
+import HeaderLaDolceVita from '../HeaderRestaurante'
 import MenuList from '../../components/MenuList'
 import { Restaurante } from '../Home'
+import HeaderResutante from '../HeaderRestaurante'
 
 const RestauranteDetalhe = () => {
   const { id } = useParams()
@@ -20,7 +21,7 @@ const RestauranteDetalhe = () => {
 
   return (
     <>
-      <HeaderLaDolceVita />
+      <HeaderResutante />
       <div className="container">
         <MenuList menu={restaurante.cardapio} />
       </div>

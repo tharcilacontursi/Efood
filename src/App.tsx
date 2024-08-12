@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { GlobalCss } from './styles'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import HeaderLaDolceVita from './pages/HeaderLaDolceVita'
+import HeaderLaDolceVita from './pages/HeaderRestaurante'
 import RestauranteDetalhe from './pages/DetalhesRestaurante'
 
 const rotas = createBrowserRouter([
@@ -13,10 +13,9 @@ const rotas = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: '/restaunte/:id',
+    path: '/restaurante/:id',
     element: (
       <>
-        <HeaderLaDolceVita />
         <RestauranteDetalhe />
       </>
     ),

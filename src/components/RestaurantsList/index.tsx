@@ -34,7 +34,6 @@ const RestaurantList = ({ restaurantes }: Props) => {
                 description={restaurante.descricao}
                 title={restaurante.titulo}
                 infos={getRestauranteTags(restaurante)}
-                link={`/${restaurante.id}`}
                 id={restaurante.id}
               />
             ))}

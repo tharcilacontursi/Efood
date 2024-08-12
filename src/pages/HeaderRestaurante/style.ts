@@ -6,6 +6,7 @@ export const Container = styled.section`
   width: 100%;
   height: 466px;
   margin-bottom: 80px;
+  background-repeat: no-repeat;
 `
 
 export const LogoContainer = styled.div`

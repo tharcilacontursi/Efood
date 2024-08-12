@@ -15,7 +15,6 @@ export type Prato = {
 export type Restaurante = {
   nome: string
   foto: string
-  link: string
   id: number
   titulo: string
   destacado?: boolean

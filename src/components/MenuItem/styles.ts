@@ -14,6 +14,17 @@ export const MenuCard = styled(OriginalCard)`
 export const MenuTitulo = styled(OriginalTitulo)`
   color: ${cores.bege};
 `
+
+export const Descricao = styled.p`
+  color: ${cores.bege};
+  font-size: 14px;
+  line-height: 22px;
+  display: block;
+  margin-top: 16px;
+  margin-left: 8px;
+  font-weight: 400;
+`
+
 export const MenuImage = styled.img`
   max-width: 304px;
   height: 167px;
