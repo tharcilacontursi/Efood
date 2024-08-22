@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Footer from './components/Footer'
-import CardapioRestaurante from './pages/DetalhesRestaurante'
+import CardapioRestaurante from './pages/CardapioRestaurante'
 import Home from './pages/Home'
 import { store } from './store/index'
 import { GlobalCss } from './styles'

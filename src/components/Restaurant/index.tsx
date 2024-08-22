@@ -1,16 +1,16 @@
-import NotaAvaliada from "../Avaliacoes";
-import { ButtonLink } from "../Button";
-import Tag from "../Tag";
-import { Card, Descricao, ImagemRestaurante, Infos, Titulo } from "./styles";
+import NotaAvaliada from '../Avaliacoes'
+import { ButtonLink } from '../Button'
+import Tag from '../Tag'
+import { Card, Descricao, ImagemRestaurante, Infos, Titulo } from './styles'
 
 type Props = {
-  image: string;
-  description: string;
-  title: string;
-  infos: string[];
-  nota: number;
-  id: number;
-};
+  image: string
+  description: string
+  title: string
+  infos: string[]
+  nota: number
+  id: number
+}
 
 function Restaurant({ image, description, title, infos, nota, id }: Props) {
   return (
@@ -28,7 +28,7 @@ function Restaurant({ image, description, title, infos, nota, id }: Props) {
       <Descricao>{description}</Descricao>
       <ButtonLink to={`/restaurante/${id}`}>Saiba mais</ButtonLink>
     </Card>
-  );
+  )
 }
 
-export default Restaurant;
+export default Restaurant
