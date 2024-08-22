@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import HeaderLaDolceVita from '../HeaderRestaurante'
 import MenuList from '../../components/MenuList'
-import { Restaurante } from '../Home'
 import HeaderResutante from '../HeaderRestaurante'
+import { Restaurante } from '../Home'
 
 const RestauranteDetalhe = () => {
   const { id } = useParams()

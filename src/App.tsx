@@ -1,11 +1,10 @@
-import React from 'react'
+import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
-import { GlobalCss } from './styles'
 import Footer from './components/Footer'
-import Home from './pages/Home'
-import HeaderLaDolceVita from './pages/HeaderRestaurante'
 import RestauranteDetalhe from './pages/DetalhesRestaurante'
+import Home from './pages/Home'
+import { store } from './store/index'
+import { GlobalCss } from './styles'
 
 const rotas = createBrowserRouter([
   {
@@ -24,11 +23,11 @@ const rotas = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <GlobalCss />
       <RouterProvider router={rotas} />
       <Footer />
-    </>
+    </Provider>
   )
 }
 

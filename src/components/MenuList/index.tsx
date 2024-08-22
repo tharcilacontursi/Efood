@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import fechar from '../../assets/images/close.png'
 import { Prato } from '../../pages/Home'
 import Menu from '../MenuItem/idex'
+import { MenuButton } from '../MenuItem/styles'
 import { Container } from '../RestaurantsList/styles'
 import { MenuUl, Modal, ModalContent } from './styles'
-import fechar from '../../assets/images/close.png'
-import { MenuButton } from '../MenuItem/styles'
 
 export type Props = {
   menu: Prato[]
