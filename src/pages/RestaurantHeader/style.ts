@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { cores } from "../../styles";
+import { cores } from '../../styles'
 
 export const Container = styled.section`
   width: 100%;
   height: 466px;
   margin-bottom: 80px;
   background-repeat: no-repeat;
-`;
+`
 
 export const LogoContainer = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ export const LogoContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-`;
+`
 
 export const Logo = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ export const Logo = styled.div`
     font-weight: bold;
     color: ${cores.laranja};
   }
-`;
+`
 
 export const TrattoriaContainer = styled.div`
   position: relative;
@@ -41,7 +41,7 @@ export const TrattoriaContainer = styled.div`
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    content: "";
+    content: '';
   }
 
   .container {
@@ -70,4 +70,4 @@ export const TrattoriaContainer = styled.div`
     font-weight: bold;
     margin-bottom: 25px;
   }
-`;
+`

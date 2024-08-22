@@ -4,7 +4,7 @@ import { Prato, Restaurante } from '../pages/Home'
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fake-api-tau.vercel.app/api/efood/',
+    baseUrl: 'https://fake-api-tau.vercel.app/api/efood',
   }),
   endpoints: (builder) => ({
     getFeaturedRestaurant: builder.query<Restaurante, void>({
@@ -13,8 +13,8 @@ const api = createApi({
     getRestaurantsList: builder.query<Restaurante[], void>({
       query: () => 'restaurantes',
     }),
-    getRestaurantDetails: builder.query<Prato[], void>({
-      query: () => 'restaurante',
+    getRestaurantDetails: builder.query<Prato[], string>({
+      query: (id) => `/restaurante/${id}`,
     }),
   }),
 })
