@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import MenuList from '../../components/MenuList'
-import { Restaurante } from '../Home'
-import RestaurantHeader from '../RestaurantHeader'
+import RestaurantHeader from '../../RestaurantHeader'
+import { useGetRestaurantDetailsQuery } from '../../services/api'
 
-const RestauranteDetalhe = () => {
+const CardapioRestaurante = () => {
   const { id } = useParams()
-  const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
+  const { data: cardapio, isLoading } = useGetRestaurantDetailsQuery(id!)
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((data) => setRestaurante(data))
-  }, [id])
-
-  if (!restaurante) {
+  if (!cardapio || isLoading) {
     return <p>Carregando...</p>
   }
 
@@ -22,10 +15,10 @@ const RestauranteDetalhe = () => {
     <>
       <RestaurantHeader />
       <div className="container">
-        <MenuList menu={restaurante.cardapio} />
+        <MenuList menu={cardapio} />
       </div>
     </>
   )
 }
 
-export default RestauranteDetalhe
+export default CardapioRestaurante
