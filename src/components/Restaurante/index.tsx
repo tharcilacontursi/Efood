@@ -1,8 +1,7 @@
-import React from 'react'
-import { Card, Titulo, Descricao, Infos, ImagemRestaurante } from './styles'
+import NotaAvaliada from '../Avaliacoes'
 import { ButtonLink } from '../Button'
 import Tag from '../Tag'
-import NotaAvaliada from '../Avaliacoes'
+import { Card, Descricao, ImagemRestaurante, Infos, Titulo } from './styles'
 
 type Props = {
   image: string
@@ -26,7 +25,7 @@ const Restaurant = ({ image, description, title, infos, nota, id }: Props) => (
       <NotaAvaliada>{nota}</NotaAvaliada>
     </div>
     <Descricao>{description}</Descricao>
-    <ButtonLink to={`/restaurante/${id}`}>Saiba mais</ButtonLink>
+    <ButtonLink to={`/restaurantes/${id}`}>Saiba mais</ButtonLink>
   </Card>
 )
 

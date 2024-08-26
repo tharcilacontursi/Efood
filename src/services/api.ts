@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { Prato, Restaurante } from '../pages/Home'
+import { Restaurante } from '../pages/Home'
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -8,13 +8,13 @@ const api = createApi({
   }),
   endpoints: (builder) => ({
     getFeaturedRestaurant: builder.query<Restaurante, void>({
-      query: () => 'restaurante',
+      query: () => 'restaurantes', //RestaurantHeader
     }),
     getRestaurantsList: builder.query<Restaurante[], void>({
-      query: () => 'restaurantes',
+      query: () => 'restaurantes', //Home
     }),
-    getRestaurantDetails: builder.query<Prato[], string>({
-      query: (id) => `/restaurante/${id}`,
+    getRestaurantDetails: builder.query<Restaurante[], string>({
+      query: (id) => `restaurantes/${id}`, //CardapioRestaurante
     }),
   }),
 })

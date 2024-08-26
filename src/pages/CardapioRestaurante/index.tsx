@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import MenuList from '../../components/MenuList'
-import RestaurantHeader from '../../RestaurantHeader'
+import RestaurantHeader from '../../components/RestaurantHeader'
 import { useGetRestaurantDetailsQuery } from '../../services/api'
 
 const CardapioRestaurante = () => {

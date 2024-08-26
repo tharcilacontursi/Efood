@@ -1,40 +1,58 @@
 import { useState } from 'react'
 import fechar from '../../assets/images/close.png'
-import { Prato } from '../../pages/Home'
+import { Restaurante } from '../../pages/Home'
 import Menu from '../MenuItem/idex'
 import { MenuButton } from '../MenuItem/styles'
 import { Container } from '../RestaurantsList/styles'
 import { MenuUl, Modal, ModalContent } from './styles'
 
 export type Props = {
-  menu: Prato[]
+  menu: Restaurante[]
 }
 
 const MenuList = ({ menu }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
   const [modalUrl, setModalUrl] = useState('')
-  const [itemSelecionado, setItemSelecionado] = useState<Prato | null>(null)
+  const [itemSelecionado, setItemSelecionado] = useState<{
+    nome: string
+    descricao: string
+    porcao: string
+    foto: string
+    preco: number
+  } | null>(null)
 
-  const modalAberto = (item: Prato) => {
+  const modalAberto = (item: {
+    nome: string
+    descricao: string
+    porcao: string
+    foto: string
+    preco: number
+  }) => {
     setModalEstaAberto(true)
     setModalUrl(item.foto)
     setItemSelecionado(item)
   }
 
+  if (!Array.isArray(menu)) {
+    console.error('menu is not an array', menu)
+    return <p>Erro: O cardápio não está disponível.</p>
+  }
   return (
     <>
       <Container>
         <div className="container">
           <MenuUl>
-            {menu.map((item: Prato) => (
-              <Menu
-                key={item.id}
-                onClick={() => modalAberto(item)}
-                image={item.foto}
-                description={item.descricao}
-                title={item.nome}
-              />
-            ))}
+            {menu.map((restaurante: Restaurante) =>
+              restaurante.cardapio.map((item) => (
+                <Menu
+                  key={item.id}
+                  onClick={() => modalAberto(item)}
+                  image={item.foto}
+                  description={item.descricao}
+                  title={item.nome}
+                />
+              ))
+            )}
           </MenuUl>
         </div>
       </Container>

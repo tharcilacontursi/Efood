@@ -1,5 +1,5 @@
-import fundo from '../assets/images/fundo.png'
-import { useGetFeaturedRestaurantQuery } from '../services/api'
+import fundo from '../../assets/images/fundo.png'
+import { useGetFeaturedRestaurantQuery } from '../../services/api'
 import { Container, Logo, LogoContainer, TrattoriaContainer } from './style'
 
 function RestaurantHeader() {

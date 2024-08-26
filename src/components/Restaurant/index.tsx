@@ -26,7 +26,7 @@ function Restaurant({ image, description, title, infos, nota, id }: Props) {
         <NotaAvaliada>{nota}</NotaAvaliada>
       </div>
       <Descricao>{description}</Descricao>
-      <ButtonLink to={`/restaurante/${id}`}>Saiba mais</ButtonLink>
+      <ButtonLink to={`/restaurantes/${id}`}>Saiba mais</ButtonLink>
     </Card>
   )
 }

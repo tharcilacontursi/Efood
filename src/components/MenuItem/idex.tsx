@@ -1,10 +1,9 @@
-import React from 'react'
 import {
+  Descricao,
   MenuButton,
   MenuCard,
   MenuImage,
   MenuTitulo,
-  Descricao,
 } from './styles'
 
 type Props = {

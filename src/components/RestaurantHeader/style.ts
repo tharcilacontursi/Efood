@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { cores } from '../styles'
+import { cores } from '../../styles'
 
 export const Container = styled.section`
   width: 100%;
