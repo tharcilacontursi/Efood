@@ -21,9 +21,7 @@ const Menu = ({ image, description, title, onClick }: Props) => {
         <MenuTitulo>{title}</MenuTitulo>
       </div>
       <Descricao>{description}</Descricao>
-      <MenuButton onClick={onClick} to="#">
-        Adicionar ao carrinho
-      </MenuButton>
+      <MenuButton to="#">Adicionar ao carrinho</MenuButton>
     </MenuCard>
   )
 }

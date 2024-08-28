@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
   background-color: ${cores.branco};
@@ -8,7 +7,11 @@ export const Card = styled.div`
   margin-bottom: 48px;
   position: relative;
   max-width: 472px;
-
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
+  position: relative;
   div {
     display: flex;
     justify-content: space-between;

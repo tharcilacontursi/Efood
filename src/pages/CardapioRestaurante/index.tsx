@@ -5,9 +5,9 @@ import { useGetRestaurantDetailsQuery } from '../../services/api'
 
 const CardapioRestaurante = () => {
   const { id } = useParams()
-  const { data: cardapio, isLoading } = useGetRestaurantDetailsQuery(id!)
+  const { data: restaurante, isLoading } = useGetRestaurantDetailsQuery(id!)
 
-  if (!cardapio || isLoading) {
+  if (!restaurante || isLoading) {
     return <p>Carregando...</p>
   }
 
@@ -15,7 +15,7 @@ const CardapioRestaurante = () => {
     <>
       <RestaurantHeader />
       <div className="container">
-        <MenuList menu={cardapio} />
+        <MenuList menu={restaurante.cardapio} />
       </div>
     </>
   )

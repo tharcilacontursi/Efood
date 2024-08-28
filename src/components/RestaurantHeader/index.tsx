@@ -1,12 +1,32 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import fundo from '../../assets/images/fundo.png'
-import { useGetFeaturedRestaurantQuery } from '../../services/api'
-import { Container, Logo, LogoContainer, TrattoriaContainer } from './style'
-
+import logo from '../../assets/images/logo.png'
+import { useGetRestaurantDetailsQuery } from '../../services/api'
+import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
+import {
+  Container,
+  Linkk,
+  Logo,
+  LogoContainer,
+  TrattoriaContainer,
+} from './style'
 function RestaurantHeader() {
-  const { data: restaurante, isLoading } = useGetFeaturedRestaurantQuery()
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
+  const { id } = useParams<{ id: string }>()
+  const { data: restaurante, isLoading } = useGetRestaurantDetailsQuery(
+    id || ''
+  )
 
   if (!restaurante) {
-    return <p>Carregando...</p>
+    return <p>Erro ao carregar os dados do restaurante.</p>
   }
 
   return (
@@ -20,12 +40,15 @@ function RestaurantHeader() {
       >
         <div className="container">
           <Logo>
-            <h4> Restaurantes </h4>
-            <img src={restaurante.foto} alt={restaurante.nome} />
-            <h4> 0 produto(s) no carrinho </h4>
+            <Linkk to="/">Restaurantes</Linkk>
+            <img src={logo} alt="logo Efood" />
+            <Linkk onClick={openCart} to={''}>
+              {items.length} - produto(s) no carrinho
+            </Linkk>
           </Logo>
         </div>
       </LogoContainer>
+
       <TrattoriaContainer
         style={{
           backgroundImage: `url(${restaurante.capa})`,

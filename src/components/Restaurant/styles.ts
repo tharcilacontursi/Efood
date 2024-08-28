@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { cores } from "../../styles";
-import { TagContainer } from "../Tag/styles";
+import { cores } from '../../styles'
 
 export const Card = styled.div`
   background-color: ${cores.branco};
@@ -15,14 +14,14 @@ export const Card = styled.div`
     justify-content: space-between;
     margin-right: 2px;
   }
-`;
+`
 
 export const ImagemRestaurante = styled.img`
   width: 100%;
   height: 217px;
   max-width: 472px;
   object-fit: cover;
-`;
+`
 
 export const Titulo = styled.h3`
   font-weight: bold;
@@ -32,7 +31,7 @@ export const Titulo = styled.h3`
   margin-bottom: 8px;
   color: ${cores.laranja};
   margin-left: 8px;
-`;
+`
 
 export const Descricao = styled.p`
   font-size: 14px;
@@ -42,10 +41,10 @@ export const Descricao = styled.p`
   margin-left: 8px;
   color: ${cores.laranja};
   font-weight: 400;
-`;
+`
 
 export const Infos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
-`;
+`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const ImagemHeader = styled.div`
   width: 100%;
@@ -27,4 +27,7 @@ export const Titulo = styled.h2`
   display: block;
   margin: 140px auto;
   text-align: center;
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 80px auto;
+  }
 `

@@ -4,6 +4,7 @@ import { cores } from '../../styles'
 
 export const StyledButtonLink = styled(Link)`
   background-color: ${cores.laranja};
+  max-width: 84px;
   color: ${cores.bege};
   font-weight: bold;
   font-size: 14px;
@@ -12,4 +13,6 @@ export const StyledButtonLink = styled(Link)`
   padding: 4px 6px;
   text-decoration: none;
   margin: 8px;
+  margin-top: auto;
+  margin-bottom: 8px;
 `

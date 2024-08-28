@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const FooterContainer = styled.div`
   background-color: ${cores.bege};
@@ -34,4 +34,7 @@ export const Paragrafo = styled.p`
   text-align: center;
   margin: 0 auto;
   font-size: 10px;
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 200px;
+  }
 `

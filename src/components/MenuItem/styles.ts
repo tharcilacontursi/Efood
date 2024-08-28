@@ -1,14 +1,21 @@
 import styled from 'styled-components'
-import { Card as OriginalCard } from '../Restaurante/styles'
-import { Titulo as OriginalTitulo } from '../Restaurante/styles'
 import { StyledButtonLink as OriginalButton } from '../Button/styles'
+import {
+  Card as OriginalCard,
+  Titulo as OriginalTitulo,
+} from '../Restaurante/styles'
 
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const MenuCard = styled(OriginalCard)`
   background-color: ${cores.laranja};
   color: ${cores.bege};
   max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  position: relative;
 `
 
 export const MenuTitulo = styled(OriginalTitulo)`
@@ -30,6 +37,12 @@ export const MenuImage = styled.img`
   height: 167px;
   width: 100%;
   margin: 8px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+  }
 `
 
 export const MenuButton = styled(OriginalButton)`
@@ -38,4 +51,9 @@ export const MenuButton = styled(OriginalButton)`
   max-width: 304px;
   width: 100%;
   text-align: center;
+  margin-top: auto;
+  margin-bottom: 8px;
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 200px;
+  }
 `

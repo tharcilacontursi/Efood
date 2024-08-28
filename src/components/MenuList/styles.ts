@@ -1,11 +1,18 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { MenuButton } from '../MenuItem/styles'
 
 export const MenuUl = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 32px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Modal = styled.div`
@@ -62,7 +69,6 @@ export const ModalContent = styled.div`
     margin: 32px;
     object-fit: cover;
   }
-
   .content {
     h4 {
       font-weight: 900;

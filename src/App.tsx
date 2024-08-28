@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Cart from './components/Cart'
 import Footer from './components/Footer'
 import CardapioRestaurante from './pages/CardapioRestaurante'
 import Home from './pages/Home'
@@ -27,6 +28,7 @@ function App() {
       <GlobalCss />
       <RouterProvider router={rotas} />
       <Footer />
+      <Cart />
     </Provider>
   )
 }
