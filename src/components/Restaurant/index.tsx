@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import NotaAvaliada from '../Avaliacoes'
 import { ButtonLink } from '../Button'
 import Tag from '../Tag'
@@ -14,20 +15,25 @@ type Props = {
 
 function Restaurant({ image, description, title, infos, nota, id }: Props) {
   return (
-    <Card>
-      <ImagemRestaurante src={image} alt={title} />
-      <Infos>
-        {infos.map((info) => (
-          <Tag key={id}>{info}</Tag>
-        ))}
-      </Infos>
-      <div>
-        <Titulo>{title}</Titulo>
-        <NotaAvaliada>{nota}</NotaAvaliada>
-      </div>
-      <Descricao>{description}</Descricao>
-      <ButtonLink to={`/restaurantes/${id}`}>Saiba mais</ButtonLink>
-    </Card>
+    <Link
+      to={`/restaurantes/${id}`}
+      style={{ textDecoration: 'none', color: 'inherit' }}
+    >
+      <Card>
+        <ImagemRestaurante src={image} alt={title} />
+        <Infos>
+          {infos.map((info) => (
+            <Tag key={id}>{info}</Tag>
+          ))}
+        </Infos>
+        <div>
+          <Titulo>{title}</Titulo>
+          <NotaAvaliada>{nota}</NotaAvaliada>
+        </div>
+        <Descricao>{description}</Descricao>
+        <ButtonLink to={`/restaurantes/${id}`}>Saiba mais</ButtonLink>
+      </Card>
+    </Link>
   )
 }
 

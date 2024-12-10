@@ -80,12 +80,11 @@ const Checkout = () => {
     },
   })
 
-  const getErrorMessage = (fieldName: string, message?: string) => {
-    const isTouched = fieldName in form.touched
-    const isInvalid = fieldName in form.errors
-    const hasError = isTouched && isInvalid
-
-    return hasError
+  const getErrorMessage = (fieldName: keyof typeof form.values) => {
+    if (form.touched[fieldName] && form.errors[fieldName]) {
+      return form.errors[fieldName]
+    }
+    return null
   }
 
   if (items.length === 0) {
@@ -120,7 +119,7 @@ const Checkout = () => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
             />
-            <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
+            <small>{getErrorMessage('fullName')}</small>
           </InputGroup>
           <InputGroup>
             <label htmlFor="address">Endereço</label>
@@ -133,7 +132,7 @@ const Checkout = () => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
             />
-            <small>{getErrorMessage('address', form.errors.address)}</small>
+            <small>{getErrorMessage('address')}</small>
           </InputGroup>
           <InputGroup>
             <label htmlFor="city">Cidade</label>
@@ -146,7 +145,7 @@ const Checkout = () => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
             />
-            <small>{getErrorMessage('city', form.errors.city)}</small>
+            <small>{getErrorMessage('city')}</small>
           </InputGroup>
           <div className="cep-numero">
             <InputGroup maxWidth="155px">
@@ -160,7 +159,7 @@ const Checkout = () => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
               />
-              <small>{getErrorMessage('cep', form.errors.cep)}</small>
+              <small>{getErrorMessage('cep')}</small>
             </InputGroup>
             <InputGroup maxWidth="155px">
               <label htmlFor="houseNumber">Número</label>
@@ -173,9 +172,7 @@ const Checkout = () => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
               />
-              <small>
-                {getErrorMessage('houseNumber', form.errors.houseNumber)}
-              </small>
+              <small>{getErrorMessage('houseNumber')}</small>
             </InputGroup>
           </div>
           <InputGroup>
@@ -188,9 +185,7 @@ const Checkout = () => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
             />
-            <small>
-              {getErrorMessage('houseComplement', form.errors.houseComplement)}
-            </small>
+            <small>{getErrorMessage('houseComplement')}</small>
           </InputGroup>
 
           <div className="buttons">

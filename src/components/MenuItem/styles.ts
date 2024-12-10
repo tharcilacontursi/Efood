@@ -3,7 +3,7 @@ import { StyledButtonLink as OriginalButton } from '../Button/styles'
 import {
   Card as OriginalCard,
   Titulo as OriginalTitulo,
-} from '../Restaurante/styles'
+} from '../Restaurant/styles'
 
 import { breakpoints, cores } from '../../styles'
 
