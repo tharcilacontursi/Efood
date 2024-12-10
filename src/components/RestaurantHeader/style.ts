@@ -8,10 +8,6 @@ export const Container = styled.section`
   height: 466px;
   margin-bottom: 80px;
   background-repeat: no-repeat;
-
-  @media (max-width: ${breakpoints.tablet}) {
-    display: none;
-  }
 `
 
 export const LogoContainer = styled.div`
@@ -28,6 +24,20 @@ export const Logo = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 150px;
+    flex-direction: column;
+    gap: 10px;
+
+    img {
+      width: 100px;
+    }
+
+    a {
+      font-size: 14px;
+    }
+  }
 `
 export const Linkk = styled(Link)`
   font-size: 18px;

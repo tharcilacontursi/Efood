@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
 import {
@@ -19,12 +20,12 @@ export const formataPreco = (preco = 0) => {
 
 const Cart = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const closeCart = () => {
     dispatch(close())
   }
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-
   const getTotalPrice = () => {
     return items.reduce((acumulador, valorAtual) => {
       return (acumulador += valorAtual.preco)
@@ -33,6 +34,10 @@ const Cart = () => {
 
   const removeItem = (id: number) => {
     dispatch(remove(id))
+  }
+
+  const handleContinueToCheckout = () => {
+    navigate('/checkout')
   }
 
   return (
@@ -55,7 +60,9 @@ const Cart = () => {
           <p>Valor total </p>
           <p>{formataPreco(getTotalPrice())}</p>
         </PriceContainer>
-        <CartButton>Continuar com a entrega</CartButton>
+        <CartButton onClick={handleContinueToCheckout}>
+          Continuar com a entrega
+        </CartButton>
       </Sidebar>
     </CartContainer>
   )
