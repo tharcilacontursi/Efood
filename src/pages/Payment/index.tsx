@@ -19,7 +19,6 @@ const Payment = () => {
   const location = useLocation()
   const delivery = location.state?.delivery
   const [isFinished, setIsFinished] = useState(false)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const { items } = useSelector((state: RootReducer) => state.cart)
 
@@ -29,11 +28,6 @@ const Payment = () => {
     return items.reduce((acumulador, valorAtual) => {
       return acumulador + valorAtual.preco
     }, 0)
-  }
-
-  const handleConcludeOrder = () => {
-    setIsSidebarOpen(false)
-    navigate('/')
   }
 
   const form = useFormik({
@@ -97,7 +91,7 @@ const Payment = () => {
   if (isFinished) {
     return (
       <CartContainer>
-        <Sidebar className={isSidebarOpen ? 'is-open' : ''}>
+        <Sidebar>
           <h2>Pedido realizado - order: {data.orderId}</h2>
           <p>
             Estamos felizes em informar que seu pedido já está em processo de
@@ -121,7 +115,7 @@ const Payment = () => {
           </p>
           <br />
           <CartButton
-            onClick={handleConcludeOrder}
+            onClick={() => navigate('/')}
             style={{ marginTop: '24px' }}
           >
             Concluir
@@ -134,7 +128,7 @@ const Payment = () => {
   return (
     <CartContainer>
       <Overlay />
-      <Sidebar className={isSidebarOpen ? 'is-open' : ''}>
+      <Sidebar>
         <h2>Pagamento - Valor a pagar {formataPreco(getTotalPrice(items))}</h2>
         <form onSubmit={form.handleSubmit}>
           <InputGroup>
