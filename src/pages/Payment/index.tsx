@@ -97,19 +97,23 @@ const Payment = () => {
             Estamos felizes em informar que seu pedido já está em processo de
             preparação e, em breve, será entregue no endereço fornecido.
           </p>
+          <br />
           <p>
             Gostaríamos de ressaltar que nossos entregadores não estão
             autorizados a realizar cobranças extras.
           </p>
+          <br />
           <p>
             Lembre-se da importância de higienizar as mãos após o recebimento do
             pedido, garantindo assim sua segurança e bem-estar durante a
             refeição.
           </p>
+          <br />
           <p>
             Esperamos que desfrute de uma deliciosa experiência gastronômica.
             Bom apetite!
           </p>
+          <br />
           <CartButton
             onClick={() => navigate('/')}
             style={{ marginTop: '24px' }}
