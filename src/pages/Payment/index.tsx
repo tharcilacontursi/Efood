@@ -46,13 +46,16 @@ const Payment = () => {
         .min(15, 'O campo precisa ter pelo menos 15 caracteres')
         .required('O campo é obrigatório'),
       cvv: Yup.string()
-        .min(3, 'O campo precisa ter pelo menos 3 caracteres')
+        .min(3, 'O campo precisa ter 3 caracteres')
+        .max(3)
         .required('O campo é obrigatório'),
       mesDeVencimento: Yup.string()
-        .min(2, 'O campo precisa ter pelo menos 2 caracteres')
+        .min(2, 'O campo precisa ter 2 caracteres')
+        .max(2)
         .required('O campo é obrigatório'),
       anoDeVencimento: Yup.string()
-        .min(4, 'O campo precisa ter pelo menos 4 caracteres')
+        .min(4, 'O campo precisa ter  4 caracteres')
+        .max(4)
         .required('O campo é obrigatório'),
     }),
     onSubmit: async (values) => {
