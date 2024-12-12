@@ -68,6 +68,13 @@ export const ModalContent = styled.div`
     width: 280px;
     margin: 32px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+      margin: 2px;
+    }
   }
   .content {
     h4 {
@@ -76,6 +83,11 @@ export const ModalContent = styled.div`
       line-height: 21.09px;
       align-items: center;
       margin-bottom: 16px;
+      @media (max-width: ${breakpoints.tablet}) {
+        font-size: 16px;
+        margin-bottom: 8px;
+        line-height: normal;
+      }
     }
 
     p {
@@ -83,6 +95,11 @@ export const ModalContent = styled.div`
       font-weight: 400;
       line-height: 22px;
       text-align: left;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        font-size: 14px;
+        line-height: normal;
+      }
     }
 
     ${MenuButton} {
@@ -90,6 +107,11 @@ export const ModalContent = styled.div`
       height: 24px;
       padding: px;
       margin: 16px 0;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        width: 180px;
+        height: 40px;
+      }
     }
   }
 `
