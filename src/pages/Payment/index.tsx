@@ -1,11 +1,12 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import { formataPreco } from '../../components/Cart'
 import { usePurchaseMutation } from '../../services/api'
 import { RootReducer } from '../../store'
+import { clearCart } from '../../store/reducers/cart'
 import {
   CartButton,
   CartContainer,
@@ -16,6 +17,7 @@ import {
 
 const Payment = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const location = useLocation()
   const delivery = location.state?.delivery
   const [isFinished, setIsFinished] = useState(false)
@@ -82,7 +84,9 @@ const Payment = () => {
       }
 
       try {
+        console.log('Iniciando compra com payload:', payload)
         const response = await purchase(payload).unwrap()
+        console.log('Resposta do pedido:', response)
         setIsFinished(true)
       } catch (error) {
         console.error('Erro ao finalizar o pedido:', error)
@@ -91,11 +95,19 @@ const Payment = () => {
     },
   })
 
+  const handleFinishOrder = () => {
+    dispatch(clearCart())
+
+    setTimeout(() => {
+      navigate('/')
+    }, 500)
+  }
+
   if (isFinished) {
     return (
       <CartContainer>
         <Sidebar>
-          <h2>Pedido realizado - order: {data.orderId}</h2>
+          <h2>Pedido realizado - order: {data?.orderId}</h2>
           <p>
             Estamos felizes em informar que seu pedido já está em processo de
             preparação e, em breve, será entregue no endereço fornecido.
@@ -117,10 +129,7 @@ const Payment = () => {
             Bom apetite!
           </p>
           <br />
-          <CartButton
-            onClick={() => navigate('/')}
-            style={{ marginTop: '24px' }}
-          >
+          <CartButton onClick={handleFinishOrder} style={{ marginTop: '24px' }}>
             Concluir
           </CartButton>
         </Sidebar>
@@ -224,3 +233,6 @@ const Payment = () => {
 }
 
 export default Payment
+function dispatch(arg0: { payload: undefined; type: 'cart/clearCart' }) {
+  throw new Error('Function not implemented.')
+}

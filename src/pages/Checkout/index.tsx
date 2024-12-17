@@ -44,6 +44,7 @@ const Checkout = () => {
         .typeError('O número deve ser válido')
         .min(1, 'O número precisa ser maior que 0')
         .required('O campo é obrigatório'),
+      houseComplement: Yup.string().nullable(),
     }),
     onSubmit: (values) => {
       const payload = {
@@ -91,8 +92,29 @@ const Checkout = () => {
     return <Navigate to="/" />
   }
 
+  const areAllRequiredFieldsValid = () => {
+    const requiredFields: Array<keyof typeof form.values> = [
+      'fullName',
+      'address',
+      'city',
+      'cep',
+      'houseNumber',
+    ]
+
+    return requiredFields.every(
+      (field) => form.touched[field] && !form.errors[field]
+    )
+  }
+
+  if (items.length === 0) {
+    return <Navigate to="/" />
+  }
+
   const handleContinueToPayment = () => {
-    if (!form.isValid) return
+    if (!areAllRequiredFieldsValid()) {
+      return
+    }
+
     navigate('/payment', {
       state: { delivery: form.values },
     })
