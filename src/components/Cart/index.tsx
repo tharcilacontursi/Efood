@@ -18,12 +18,17 @@ export const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
-const Cart = () => {
+interface CartProps {
+  onProceed: () => void
+}
+
+const Cart: React.FC<CartProps> = ({ onProceed }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const closeCart = () => {
     dispatch(close())
+    navigate(`/`)
   }
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const getTotalPrice = () => {
@@ -37,7 +42,7 @@ const Cart = () => {
   }
 
   const handleContinueToCheckout = () => {
-    navigate('/checkout')
+    navigate('/')
   }
 
   return (
@@ -60,9 +65,7 @@ const Cart = () => {
           <p>Valor total </p>
           <p>{formataPreco(getTotalPrice())}</p>
         </PriceContainer>
-        <CartButton onClick={handleContinueToCheckout}>
-          Continuar com a entrega
-        </CartButton>
+        <CartButton onClick={onProceed}>Continuar com a entrega</CartButton>
       </Sidebar>
     </CartContainer>
   )

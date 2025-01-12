@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import fundo from '../../assets/images/fundo.png'
 import logo from '../../assets/images/logo.png'
 import { useGetRestaurantDetailsQuery } from '../../services/api'
@@ -14,6 +14,7 @@ import {
 } from './style'
 function RestaurantHeader() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
@@ -42,7 +43,7 @@ function RestaurantHeader() {
           <Logo>
             <Linkk to="/">Restaurantes</Linkk>
             <img src={logo} alt="logo Efood" />
-            <Linkk onClick={openCart} to={''}>
+            <Linkk onClick={openCart} to={'/carrinho'}>
               {items.length} - produto(s) no carrinho
             </Linkk>
           </Logo>

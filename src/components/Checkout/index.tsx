@@ -12,9 +12,17 @@ import {
   Sidebar,
 } from './styles'
 
-const Checkout = () => {
+interface CheckoutProps {
+  onProceedToPayment: (deliveryData: any) => void
+  onBackToCart: () => void
+}
+
+const Checkout: React.FC<CheckoutProps> = ({
+  onProceedToPayment,
+  onBackToCart,
+}) => {
   const navigate = useNavigate()
-  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
+  const [purchase, { isLoading, isError, data, error }] = usePurchaseMutation()
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   const form = useFormik({
@@ -47,37 +55,9 @@ const Checkout = () => {
       houseComplement: Yup.string().nullable(),
     }),
     onSubmit: (values) => {
-      const payload = {
-        delivery: {
-          receiver: values.fullName,
-          address: {
-            description: values.address,
-            city: values.city,
-            zipCode: values.cep,
-            number: Number(values.houseNumber),
-            complement: values.houseComplement,
-          },
-        },
-        products: [
-          {
-            id: 1,
-            price: 100,
-          },
-        ],
-        payment: {
-          card: {
-            name: 'Nome do titular',
-            number: '1234567812345678',
-            code: 123,
-            expires: {
-              month: 12,
-              year: 2025,
-            },
-          },
-        },
+      if (areAllRequiredFieldsValid()) {
+        onProceedToPayment(values)
       }
-
-      purchase(payload)
     },
   })
 
@@ -105,23 +85,12 @@ const Checkout = () => {
       (field) => form.touched[field] && !form.errors[field]
     )
   }
-
-  if (items.length === 0) {
-    return <Navigate to="/" />
-  }
-
   const handleContinueToPayment = () => {
     if (!areAllRequiredFieldsValid()) {
       return
     }
 
-    navigate('/payment', {
-      state: { delivery: form.values },
-    })
-  }
-
-  const handleBackToCart = () => {
-    navigate('/')
+    onProceedToPayment(form.values)
   }
 
   return (
@@ -211,10 +180,8 @@ const Checkout = () => {
           </InputGroup>
 
           <div className="buttons">
-            <CartButton type="submit" onClick={handleContinueToPayment}>
-              Continuar com o pagamento
-            </CartButton>
-            <CartButton type="button" onClick={handleBackToCart}>
+            <CartButton type="submit">Continuar com o pagamento</CartButton>
+            <CartButton type="button" onClick={onBackToCart}>
               Voltar para o carrinho
             </CartButton>
           </div>

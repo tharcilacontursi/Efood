@@ -15,16 +15,27 @@ import {
   Sidebar,
 } from './styles'
 
-const Payment = () => {
+interface PaymentProps {
+  deliveryData: any
+  onOrderComplete: () => void
+  onBackToCheckout: () => void
+}
+
+const Payment: React.FC<PaymentProps> = ({
+  deliveryData,
+  onOrderComplete,
+  onBackToCheckout,
+}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const location = useLocation()
   const delivery = location.state?.delivery
   const [isFinished, setIsFinished] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const { items } = useSelector((state: RootReducer) => state.cart)
 
-  const [purchase, { data, isLoading, isError }] = usePurchaseMutation()
+  const [purchase, { data, isLoading, isError, error }] = usePurchaseMutation()
 
   const getTotalPrice = (items: { preco: number }[]) => {
     return items.reduce((acumulador, valorAtual) => {
@@ -56,14 +67,14 @@ const Payment = () => {
         .max(2)
         .required('O campo é obrigatório'),
       anoDeVencimento: Yup.string()
-        .min(4, 'O campo precisa ter  4 caracteres')
+        .min(4, 'O campo precisa ter 4 caracteres')
         .max(4)
         .required('O campo é obrigatório'),
     }),
     onSubmit: async (values) => {
       if (!delivery) {
         alert('Dados de entrega não encontrados')
-        navigate('/checkout')
+        navigate('/')
         return
       }
 
@@ -87,10 +98,14 @@ const Payment = () => {
         console.log('Iniciando compra com payload:', payload)
         const response = await purchase(payload).unwrap()
         console.log('Resposta do pedido:', response)
-        setIsFinished(true)
-      } catch (error) {
+        if (response?.orderId) {
+          setIsFinished(true)
+        } else {
+          throw new Error('Erro ao processar o pagamento. Tente novamente.')
+        }
+      } catch (error: any) {
         console.error('Erro ao finalizar o pedido:', error)
-        alert('Erro ao finalizar o pedido!')
+        setErrorMessage('Erro ao finalizar o pedido. Tente novamente.')
       }
     },
   })
@@ -107,7 +122,7 @@ const Payment = () => {
     return (
       <CartContainer>
         <Sidebar>
-          <h2>Pedido realizado - order: {data?.orderId}</h2>
+          <h2>Pedido realizado - Order ID: {data?.orderId}</h2>
           <p>
             Estamos felizes em informar que seu pedido já está em processo de
             preparação e, em breve, será entregue no endereço fornecido.
@@ -141,7 +156,8 @@ const Payment = () => {
     <CartContainer>
       <Overlay />
       <Sidebar>
-        <h2>Pagamento - Valor a pagar {formataPreco(getTotalPrice(items))}</h2>
+        <h2>Pagamento - Valor a pagar: {formataPreco(getTotalPrice(items))}</h2>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <form onSubmit={form.handleSubmit}>
           <InputGroup>
             <label htmlFor="nomeNoCartao">Nome no cartão</label>
@@ -221,8 +237,10 @@ const Payment = () => {
             </InputGroup>
           </div>
           <div className="buttons">
-            <CartButton type="submit">Finalizar Pedido</CartButton>
-            <CartButton type="button" onClick={() => navigate('/checkout')}>
+            <CartButton type="submit" disabled={isLoading}>
+              Finalizar Pedido
+            </CartButton>
+            <CartButton type="button" onClick={onBackToCheckout}>
               Voltar para o Checkout
             </CartButton>
           </div>
@@ -233,6 +251,3 @@ const Payment = () => {
 }
 
 export default Payment
-function dispatch(arg0: { payload: undefined; type: 'cart/clearCart' }) {
-  throw new Error('Function not implemented.')
-}

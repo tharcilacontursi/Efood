@@ -83,7 +83,7 @@ const MenuList = ({ menu }: Props) => {
                 <br />
                 Serve: {itemSelecionado.porcao}
               </p>
-              <MenuButton to="#" onClick={addToCart}>
+              <MenuButton to="/carrinho" onClick={addToCart}>
                 Adicionar ao carrinho - R$ {itemSelecionado.preco.toFixed(2)}
               </MenuButton>
             </div>
