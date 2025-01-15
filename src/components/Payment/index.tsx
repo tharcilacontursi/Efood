@@ -1,7 +1,7 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import { formataPreco } from '../../components/Cart'
 import { usePurchaseMutation } from '../../services/api'
@@ -28,8 +28,6 @@ const Payment: React.FC<PaymentProps> = ({
 }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const location = useLocation()
-  const delivery = location.state?.delivery
   const [isFinished, setIsFinished] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -72,15 +70,15 @@ const Payment: React.FC<PaymentProps> = ({
         .required('O campo é obrigatório'),
     }),
     onSubmit: async (values) => {
-      if (!delivery) {
-        alert('Dados de entrega não encontrados')
+      if (!deliveryData) {
+        alert('Dados de entrega não fornecidos')
         navigate('/')
         return
       }
 
       const payload = {
-        delivery,
-        products: [{ id: 1, price: 100 }],
+        delivery: deliveryData,
+        products: items.map((item) => ({ id: item.id, price: item.preco })),
         payment: {
           card: {
             name: values.nomeNoCartao,
