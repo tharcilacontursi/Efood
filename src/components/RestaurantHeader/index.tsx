@@ -6,6 +6,7 @@ import { useGetRestaurantDetailsQuery } from '../../services/api'
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
 import {
+  Button,
   Container,
   Linkk,
   Logo,
@@ -43,9 +44,9 @@ function RestaurantHeader() {
           <Logo>
             <Linkk to="/">Restaurantes</Linkk>
             <img src={logo} alt="logo Efood" />
-            <Linkk onClick={openCart} to={'/carrinho'}>
+            <Button onClick={openCart}>
               {items.length} - produto(s) no carrinho
-            </Linkk>
+            </Button>
           </Logo>
         </div>
       </LogoContainer>

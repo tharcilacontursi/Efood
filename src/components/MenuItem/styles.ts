@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { StyledButtonLink as OriginalButton } from '../Button/styles'
 import {
   Card as OriginalCard,
   Titulo as OriginalTitulo,
 } from '../Restaurant/styles'
 
+import { Link } from 'react-router-dom'
 import { breakpoints, cores } from '../../styles'
 
 export const MenuCard = styled(OriginalCard)`
@@ -45,14 +45,23 @@ export const MenuImage = styled.img`
   }
 `
 
-export const MenuButton = styled(OriginalButton)`
+export const MenuButton = styled(Link).attrs((props) => ({
+  as: props.as || Link,
+}))`
+  align-items: center;
   background-color: ${cores.bege};
   color: ${cores.laranja};
   max-width: 304px;
   width: 100%;
   text-align: center;
-  margin-top: auto;
-  margin-bottom: 8px;
+  margin: 8px;
+  display: inline-block;
+  text-decoration: none;
+  height: 24px;
+  font-weight: bold;
+  padding: 3px;
+  border: none;
+
   @media (max-width: ${breakpoints.desktop}) {
     max-width: 200px;
   }

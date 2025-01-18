@@ -1,4 +1,5 @@
 import { useFormik } from 'formik'
+import MaskedInput from 'react-input-mask'
 import { useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -46,7 +47,7 @@ const Checkout: React.FC<CheckoutProps> = ({
         .min(3, 'A cidade precisa ter pelo menos 3 caracteres')
         .required('O campo é obrigatório'),
       cep: Yup.string()
-        .length(8, 'O CEP precisa ter 8 caracteres')
+        .length(9, 'O CEP precisa ter 8 números')
         .required('O campo é obrigatório'),
       houseNumber: Yup.number()
         .typeError('O número deve ser válido')
@@ -104,7 +105,6 @@ const Checkout: React.FC<CheckoutProps> = ({
             <input
               id="fullName"
               type="text"
-              required
               name="fullName"
               value={form.values.fullName}
               onChange={form.handleChange}
@@ -117,7 +117,6 @@ const Checkout: React.FC<CheckoutProps> = ({
             <input
               id="address"
               type="text"
-              required
               name="address"
               value={form.values.address}
               onChange={form.handleChange}
@@ -130,7 +129,6 @@ const Checkout: React.FC<CheckoutProps> = ({
             <input
               id="city"
               type="text"
-              required
               name="city"
               value={form.values.city}
               onChange={form.handleChange}
@@ -141,10 +139,10 @@ const Checkout: React.FC<CheckoutProps> = ({
           <div className="cep-numero">
             <InputGroup maxWidth="155px">
               <label htmlFor="cep">CEP</label>
-              <input
+              <MaskedInput
+                mask="99999-999"
                 id="cep"
                 type="text"
-                required
                 name="cep"
                 value={form.values.cep}
                 onChange={form.handleChange}
@@ -157,7 +155,6 @@ const Checkout: React.FC<CheckoutProps> = ({
               <input
                 id="houseNumber"
                 type="number"
-                required
                 name="houseNumber"
                 value={form.values.houseNumber}
                 onChange={form.handleChange}

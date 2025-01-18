@@ -86,3 +86,12 @@ export const TrattoriaContainer = styled.div`
     margin-bottom: 25px;
   }
 `
+
+export const Button = styled.button`
+  font-size: 18px;
+  font-weight: bold;
+  color: ${cores.laranja};
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+`

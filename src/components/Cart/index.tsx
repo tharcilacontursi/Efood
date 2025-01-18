@@ -28,7 +28,6 @@ const Cart: React.FC<CartProps> = ({ onProceed }) => {
 
   const closeCart = () => {
     dispatch(close())
-    navigate(`/`)
   }
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const getTotalPrice = () => {

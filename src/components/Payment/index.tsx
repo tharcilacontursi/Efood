@@ -1,5 +1,6 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
+import MaskedInput from 'react-input-mask'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -54,16 +55,16 @@ const Payment: React.FC<PaymentProps> = ({
         .min(5, 'O campo precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       numeroDoCartao: Yup.string()
-        .min(15, 'O campo precisa ter pelo menos 15 caracteres')
+        .min(16, 'O campo precisa ter pelo menos 16 caracteres')
         .required('O campo é obrigatório'),
       cvv: Yup.string()
         .min(3, 'O campo precisa ter 3 caracteres')
         .max(3)
         .required('O campo é obrigatório'),
       mesDeVencimento: Yup.string()
-        .min(2, 'O campo precisa ter 2 caracteres')
+        .min(1)
         .max(2)
-        .required('O campo é obrigatório'),
+        .required('Digite o mês de vencimento. Ex: 01'),
       anoDeVencimento: Yup.string()
         .min(4, 'O campo precisa ter 4 caracteres')
         .max(4)
@@ -175,7 +176,8 @@ const Payment: React.FC<PaymentProps> = ({
           <div className="numeroCartao-CVV">
             <InputGroup maxWidth="228px">
               <label htmlFor="numeroDoCartao">Número do cartão</label>
-              <input
+              <MaskedInput
+                mask="9999 9999 9999 9999"
                 type="text"
                 name="numeroDoCartao"
                 id="numeroDoCartao"
@@ -190,7 +192,8 @@ const Payment: React.FC<PaymentProps> = ({
             </InputGroup>
             <InputGroup maxWidth="87px">
               <label htmlFor="cvv">CVV</label>
-              <input
+              <MaskedInput
+                mask="999"
                 type="text"
                 name="cvv"
                 id="cvv"
@@ -205,7 +208,8 @@ const Payment: React.FC<PaymentProps> = ({
           <div className="mesAnoVencimento">
             <InputGroup maxWidth="155px">
               <label htmlFor="mesDeVencimento">Mês de vencimento</label>
-              <input
+              <MaskedInput
+                mask="99"
                 type="text"
                 name="mesDeVencimento"
                 id="mesDeVencimento"
@@ -220,7 +224,8 @@ const Payment: React.FC<PaymentProps> = ({
             </InputGroup>
             <InputGroup maxWidth="155px">
               <label htmlFor="anoDeVencimento">Ano de vencimento</label>
-              <input
+              <MaskedInput
+                mask="9999"
                 type="text"
                 name="anoDeVencimento"
                 id="anoDeVencimento"
